@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<title>MarkDown 使用手册 | Wise-Bug</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Home</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Home</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">MarkDown 使用手册</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Wise-Ant</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">七月 30, 2019&nbsp;&nbsp;19:07:57</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="MarkDown-使用手册"><a href="#MarkDown-使用手册" class="headerlink" title="MarkDown 使用手册"></a>MarkDown 使用手册</h1><p>[TOC]</p>
+<hr>
+<p>MarkDown 是一款用来写作的轻量级语言，对我个人来说，它没有 Word 的排版复杂，也没有 Text 的简陋。如果你用过  Jupyter Notebook ，你就会发现它的简洁之美。在美观和简单之间，这个度 MarkDown 掌握的刚刚好。你可以将更多的精力放在作品的内容之中，尤其对于程序员来说，我觉得极其友好。MarkDown 的使用还是需要一定的学习成本的，所以在这里写份手册用来防蠢。</p>
+<h2 id="编辑器：Typora"><a href="#编辑器：Typora" class="headerlink" title="编辑器：Typora"></a>编辑器：Typora</h2><p>我现在使用的是 Typora，其他的我也没怎么用，主要是我是从 Jupyter Notebook 中知道 MarkDown 的，对于 Jupyter Notebook 的即时渲染挺喜欢的，所以对于其他将源码编辑和效果预览分为两部分的编辑器并不感冒。当然 Typora 并不是完美的，它好像并不支持部分内容的源码模式修改，但可以使用快捷键进行即时修改。对于Typora 的使用方法我会再写一份使用手册，这里就不详述了。</p>
+<h3 id="一、标题及目录"><a href="#一、标题及目录" class="headerlink" title="一、标题及目录"></a>一、标题及目录</h3><h4 id="1-一至六级标题"><a href="#1-一至六级标题" class="headerlink" title="1. 一至六级标题"></a>1. 一至六级标题</h4><p><strong>标准语法</strong>：”#” + “空格” + 文字<br>一个 # 是一级标题，两个 # 是二级标题，以此类推，共支持六级标签。</p>
+<p><strong>示例</strong>：</p>
+<pre><code># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题</code></pre><p><img src="C:%5CUsers%5Cm1309%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1564560964908.png" alt="标题示例图片" title="标题示例图片"></p>
+<h4 id="2-显示目录"><a href="#2-显示目录" class="headerlink" title="2. 显示目录"></a>2. 显示目录</h4><p><strong>标准语法</strong>：直接将   [toc]   放在要显示位置的首位。</p>
+<p><strong>示例</strong>：</p>
+<pre><code>[toc]</code></pre><p>[TOC]</p>
+<h3 id="二、字体"><a href="#二、字体" class="headerlink" title="二、字体"></a>二、字体</h3><h4 id="1-加粗："><a href="#1-加粗：" class="headerlink" title="1. 加粗："></a>1. 加粗：</h4><p><strong>标准语法</strong>：左右两边分别用  “ ** “ 包起来。（两个 * 号）</p>
+<p><strong>示例</strong>：</p>
+<pre><code>**加粗**</code></pre><p><strong>加粗</strong></p>
+<h4 id="2-斜体："><a href="#2-斜体：" class="headerlink" title="2. 斜体："></a>2. 斜体：</h4><p><strong>标准语法</strong>：左右两边分别用  “ * “ 包起来。（一个 * 号）</p>
+<p><strong>示例</strong>：</p>
+<pre><code>*斜体*</code></pre><p><em>斜体</em></p>
+<h4 id="4-斜体加粗："><a href="#4-斜体加粗：" class="headerlink" title="4. 斜体加粗："></a>4. 斜体加粗：</h4><p><strong>标准语法</strong>：左右两边分别用  “ *** “ 包起来。（三个 * 号）</p>
+<p><strong>示例</strong>：</p>
+<pre><code>***斜体加粗***</code></pre><p><strong><em>斜体加粗</em></strong></p>
+<h4 id="5-删除线："><a href="#5-删除线：" class="headerlink" title="5. 删除线："></a>5. 删除线：</h4><p><strong>标准语法</strong>：左右两边分别用  “ ~~ “ 包起来。（两个 ~ 号）</p>
+<p><strong>示例</strong>：</p>
+<pre><code>~~删除线~~</code></pre><p><del>删除线</del></p>
+<h3 id="三、插入"><a href="#三、插入" class="headerlink" title="三、插入"></a>三、插入</h3><h4 id="1-单行代码："><a href="#1-单行代码：" class="headerlink" title="1. 单行代码："></a>1. 单行代码：</h4><p><strong>标准语法</strong>：左右两边分别用  “ ` “ 包起来。（键盘右上角，英文名称：accent，重音符，用来表示字母的特别音质而在印刷体或书写体中使用的符号）。</p>
+<p><strong>示例</strong>：</p>
+<pre><code>`printf(&quot;Hello MarkDown!!!\n&quot;);`</code></pre><p><code>printf(&quot;Hello MarkDown!!!\n&quot;);</code></p>
+<h4 id="2-多行代码："><a href="#2-多行代码：" class="headerlink" title="2. 多行代码："></a>2. 多行代码：</h4><p><strong>标准语法</strong>：上下两端分别用  “ ``` “ 包起来。（三个重音符）。</p>
+<p><strong>示例</strong>：</p>
+<pre><code>​```
+int a=1;
+int b=2;
+printf(&quot;%d\n&quot;, a+b);
+​```</code></pre><pre><code>int a=1;
+int b=2;
+printf(&quot;%d\n&quot;, a+b);</code></pre><h4 id="3-分割线"><a href="#3-分割线" class="headerlink" title="3. 分割线"></a>3. 分割线</h4><p><strong>标准语法</strong>：三个或三个以上的 “ - “ 、” _ “  或  “ * “ ：</p>
+<p><strong>示例</strong>：</p>
+<pre><code>---</code></pre><hr>
+<pre><code>___</code></pre><hr>
+<pre><code>***</code></pre><hr>
+<h4 id="4-图片"><a href="#4-图片" class="headerlink" title="4. 图片"></a>4. 图片</h4><p><strong>标准语法</strong>：![图片内容注释](图片地址 “图片标题”)</p>
+<p>图片标题可不写，写了之后的功能就是，当鼠标移到图片上时显示内容。</p>
+<p>当然，一般情况下，复制粘贴也是支持的。</p>
+<p><strong>示例</strong>：</p>
+<pre><code>![坠入](C:\Users\m1309\Pictures\图片\time.jpg &quot;坠入&quot;)</code></pre><p><img src="C:%5CUsers%5Cm1309%5CPictures%5C%E5%9B%BE%E7%89%87%5Ctime.jpg" alt="坠入" title="坠入"></p>
+<h4 id="5-超链接"><a href="#5-超链接" class="headerlink" title="5. 超链接"></a>5. 超链接</h4><p><strong>标准语法</strong>：[超链接名](超链接地址 “超链接title”)</p>
+<p>title 可加可不加，但必须加 http/https。</p>
+<p>如果需要在 Typora 中打开链接，需要按着 Ctrl 再点击链接。</p>
+<p><strong>示例</strong>：</p>
+<pre><code>[我的博客](https://Wise-Bug.github.io)</code></pre><p><a href="https://wise-bug.github.io/">我的博客</a></p>
+<h3 id="四、序列和表格"><a href="#四、序列和表格" class="headerlink" title="四、序列和表格"></a>四、序列和表格</h3><h4 id="1-无序序列"><a href="#1-无序序列" class="headerlink" title="1. 无序序列"></a>1. 无序序列</h4><p><strong>标准语法</strong>：<code>*</code>、<code>+</code> 或 <code>-</code>  +  “空格” + 内容</p>
+<p>在序列前加 Tab 可生成一个子序列。</p>
+<p><strong>示例</strong>：</p>
+<pre><code>* 序列1
+    * 子序列1
+    * 子序列2
+* 序列2</code></pre><ul>
+<li>序列1<ul>
+<li>子序列1</li>
+<li>子序列2</li>
+</ul>
+</li>
+<li>序列2</li>
+</ul>
+<h4 id="2-有序序列"><a href="#2-有序序列" class="headerlink" title="2. 有序序列"></a>2. 有序序列</h4><p><strong>标准语法</strong>：数字 + <code>.</code> +  “空格”  +  内容</p>
+<p>在序列前加 Tab 可生成一个子序列。</p>
+<p><strong>示例</strong>：</p>
+<pre><code>1. 有序序列1
+    1.1 有序子序列1
+    1.2 有序子序列2
+2. 有序序列2
+    * 无序子序列1
+    * 无序子序列2</code></pre><ol>
+<li>有序序列1<br> 1.1 有序子序列1<br> 1.2 有序子序列2</li>
+<li>有序序列2<ul>
+<li>无序子序列1</li>
+<li>无序子序列2</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-表格"><a href="#3-表格" class="headerlink" title="3. 表格"></a>3. 表格</h4><p><strong>标准语法</strong>：</p>
+<ol>
+<li>表头：|表头1|表头2|表头3|</li>
+<li>分割表头和内容：|—-|—-|—-| ，这部分还有一个功能就是自定义居中、居左、居右。<ul>
+<li>默认居左</li>
+<li>居中：|:—-:|:—-:|:—-:|</li>
+<li>居右：|—-:|—-:|—-:|</li>
+</ul>
+</li>
+<li>内容：|内容1|内容2|内容3|</li>
+</ol>
+<p>但是由于 Typora 这个编辑器过于自动化，基本上只要写了表头之后，就会自动生成表格了，如果需要自定义修改，需要启用源代码模式进行修改。还有一点，一般不会进行表头的编写，这样可以自定义内容的格式，可变幻的风格会更大。</p>
+<p><strong>示例</strong>：</p>
+<pre><code>| 表头1 | 表头2 | 表头2 |
+| ----- | :-----: | -----: |
+| 内容1 | 内容2 | 内容3 |
+</code></pre><table>
+<thead>
+<tr>
+<th>表头1</th>
+<th align="center">表头2</th>
+<th align="right">表头2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内容1</td>
+<td align="center">内容2</td>
+<td align="right">内容3</td>
+</tr>
+</tbody></table>
+<h3 id="五、其他"><a href="#五、其他" class="headerlink" title="五、其他"></a>五、其他</h3><p>其实，以上部分已经可以处理绝大部分的文档编写了。但是 MarkDown 的功能绝不只有这些，下面的部分作为扩展部分。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Wise-Ant</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://wise-bug.github.io/2019/07/30/MarkDown 使用手册/">https://wise-bug.github.io/2019/07/30/MarkDown 使用手册/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY<strong>?</strong></strong></span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/07/30/Hello-hexo/">Hello hexo</a>
+            
+            
+            <a class="next" rel="next" href="/2019/07/30/hello-world/">Hello World</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Wise-Ant | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
