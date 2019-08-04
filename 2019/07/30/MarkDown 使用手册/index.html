@@ -192,100 +192,82 @@
 <h2 id="编辑器：Typora"><a href="#编辑器：Typora" class="headerlink" title="编辑器：Typora"></a>编辑器：Typora</h2><p>我现在使用的是 Typora，其他的我也没怎么用，主要是我是从 Jupyter Notebook 中知道 MarkDown 的，对于 Jupyter Notebook 的即时渲染挺喜欢的，所以对于其他将源码编辑和效果预览分为两部分的编辑器并不感冒。当然 Typora 并不是完美的，它好像并不支持部分内容的源码模式修改，但可以使用快捷键进行即时修改。对于Typora 的使用方法我会再写一份使用手册，这里就不详述了。</p>
 <h3 id="一、标题及目录"><a href="#一、标题及目录" class="headerlink" title="一、标题及目录"></a>一、标题及目录</h3><h4 id="1-一至六级标题"><a href="#1-一至六级标题" class="headerlink" title="1. 一至六级标题"></a>1. 一至六级标题</h4><p><strong>标准语法</strong>：<code>#</code>+ “空格” + 文字<br>一个 # 是一级标题，两个 # 是二级标题，以此类推，共支持六级标签。</p>
 <p><strong>示例</strong>：</p>
-<pre><code># 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
-##### 五级标题
-###### 六级标题</code></pre><p><img src="//wise-bug.github.io/2019/07/30/MarkDown 使用手册/0.png" alt="标题示例图片" title="标题示例图片"></p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+
+<p><img src="//wise-bug.github.io/2019/07/30/MarkDown 使用手册/0.png" alt="标题示例图片" title="标题示例图片"></p>
 <h4 id="2-显示目录"><a href="#2-显示目录" class="headerlink" title="2. 显示目录"></a>2. 显示目录</h4><p><strong>标准语法</strong>：直接将   [toc]   放在要显示位置的首位。</p>
 <p><strong>示例</strong>：</p>
-<pre><code>[toc]</code></pre><p><img src="//wise-bug.github.io/2019/07/30/MarkDown 使用手册/1.png" alt="目录"></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[toc]</span><br></pre></td></tr></table></figure>
+
+<p><img src="//wise-bug.github.io/2019/07/30/MarkDown 使用手册/1.png" alt="目录"></p>
 <h3 id="二、字体"><a href="#二、字体" class="headerlink" title="二、字体"></a>二、字体</h3><h4 id="1-加粗："><a href="#1-加粗：" class="headerlink" title="1. 加粗："></a>1. 加粗：</h4><p><strong>标准语法</strong>：左右两边分别用  <code>**</code>  包起来。（两个 * 号）</p>
 <p><strong>示例</strong>：</p>
-<pre><code>**加粗**</code></pre><p><strong>加粗</strong></p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*<span class="strong">*加粗*</span><span class="strong">*</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>加粗</strong></p>
 <h4 id="2-斜体："><a href="#2-斜体：" class="headerlink" title="2. 斜体："></a>2. 斜体：</h4><p><strong>标准语法</strong>：左右两边分别用  <code>*</code> 包起来。（一个 * 号）</p>
 <p><strong>示例</strong>：</p>
-<pre><code>*斜体*</code></pre><p><em>斜体</em></p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">*斜体*</span></span><br></pre></td></tr></table></figure>
+
+<p><em>斜体</em></p>
 <h4 id="4-斜体加粗："><a href="#4-斜体加粗：" class="headerlink" title="4. 斜体加粗："></a>4. 斜体加粗：</h4><p><strong>标准语法</strong>：左右两边分别用  <code>***</code> 包起来。（三个 * 号）</p>
 <p><strong>示例</strong>：</p>
-<pre><code>***斜体加粗***</code></pre><p><strong><em>斜体加粗</em></strong></p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**<span class="strong">*斜体加粗*</span>*<span class="strong">*</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>斜体加粗</em></strong></p>
 <h4 id="5-删除线："><a href="#5-删除线：" class="headerlink" title="5. 删除线："></a>5. 删除线：</h4><p><strong>标准语法</strong>：左右两边分别用  <code>~~</code> 包起来。（两个 ~ 号）</p>
 <p><strong>示例</strong>：</p>
-<pre><code>~~删除线~~</code></pre><p><del>删除线</del></p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~删除线~~</span><br></pre></td></tr></table></figure>
+
+<p><del>删除线</del></p>
 <h3 id="三、插入"><a href="#三、插入" class="headerlink" title="三、插入"></a>三、插入</h3><h4 id="1-单行代码："><a href="#1-单行代码：" class="headerlink" title="1. 单行代码："></a>1. 单行代码：</h4><p><strong>标准语法</strong>：左右两边分别用  `  包起来。（键盘右上角，英文名称：accent，重音符，用来表示字母的特别音质而在印刷体或书写体中使用的符号）。</p>
 <p><strong>示例</strong>：</p>
-<pre><code>`printf(&quot;Hello MarkDown!!!\n&quot;);`</code></pre><p><code>printf(&quot;Hello MarkDown!!!\n&quot;);</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="built_in">printf</span>(<span class="string">"Hello MarkDown!!!\n"</span>);`</span><br></pre></td></tr></table></figure>
+
+<p><code>printf(&quot;Hello MarkDown!!!\n&quot;);</code></p>
 <h4 id="2-多行代码："><a href="#2-多行代码：" class="headerlink" title="2. 多行代码："></a>2. 多行代码：</h4><p><strong>标准语法</strong>：上下两端分别用  ```  包起来。（三个重音符）。</p>
 <p><strong>示例</strong>：</p>
-<pre><code>​```
-int a=1;
-int b=2;
-printf(&quot;%d\n&quot;, a+b);
-​```</code></pre><pre><code>int a=1;
-int b=2;
-printf(&quot;%d\n&quot;, a+b);</code></pre><h4 id="3-分割线"><a href="#3-分割线" class="headerlink" title="3. 分割线"></a>3. 分割线</h4><p><strong>标准语法</strong>：三个或三个以上的 <code>-</code> 、<code>_</code>  或  <code>*</code> ：</p>
-<p><strong>示例</strong>：</p>
-<pre><code>---</code></pre><hr>
-<pre><code>___</code></pre><hr>
-<pre><code>***</code></pre><hr>
-<h4 id="4-图片"><a href="#4-图片" class="headerlink" title="4. 图片"></a>4. 图片</h4><p><strong>标准语法</strong>：![图片内容注释](图片地址 “图片标题”)</p>
-<p>图片标题可不写，写了之后的功能就是，当鼠标移到图片上时显示内容。</p>
-<p>当然，一般情况下，复制粘贴也是支持的。</p>
-<p><strong>示例</strong>：</p>
-<pre><code>![坠入](C:\Users\m1309\Pictures\图片\time.jpg &quot;坠入&quot;)</code></pre><p><img src="//wise-bug.github.io/2019/07/30/MarkDown 使用手册/2.jpg" alt="坠入" title="坠入"></p>
-<h4 id="5-超链接"><a href="#5-超链接" class="headerlink" title="5. 超链接"></a>5. 超链接</h4><p><strong>标准语法</strong>：[超链接名](超链接地址 “超链接title”)</p>
-<p>title 可加可不加，但必须加 http/https。</p>
-<p>如果需要在 Typora 中打开链接，需要按着 Ctrl 再点击链接。</p>
-<p><strong>示例</strong>：</p>
-<pre><code>[我的博客](https://Wise-Bug.github.io)</code></pre><p><a href="https://wise-bug.github.io/">我的博客</a></p>
-<h3 id="四、序列和表格"><a href="#四、序列和表格" class="headerlink" title="四、序列和表格"></a>四、序列和表格</h3><h4 id="1-无序序列"><a href="#1-无序序列" class="headerlink" title="1. 无序序列"></a>1. 无序序列</h4><p><strong>标准语法</strong>：<code>*</code>、<code>+</code> 或 <code>-</code>  +  “空格” + 内容</p>
-<p>在序列前加 Tab 可生成一个子序列。</p>
-<p><strong>示例</strong>：</p>
-<pre><code>* 序列1
-    * 子序列1
-    * 子序列2
-* 序列2</code></pre><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">​</span><br></pre></td></tr></table></figure>
+
+<p>int a=1;<br>int b=2;<br>printf(“%d\n”, a+b);<br>​<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure></p>
+<p>int a=1;<br>int b=2;<br>printf(“%d\n”, a+b);</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">####  3. 分割线</span><br><span class="line"></span><br><span class="line">**标准语法**：三个或三个以上的 ` - ` 、` _ `  或  ` * ` ：</span><br><span class="line"></span><br><span class="line">**示例**：</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable">___</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="emphasis">***</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">#### 4. 图片</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**标准语法**</span>：\!\[<span class="string">图片内容注释</span>](<span class="link">图片地址 "图片标题"</span>)</span><br><span class="line"></span><br><span class="line">图片标题可不写，写了之后的功能就是，当鼠标移到图片上时显示内容。</span><br><span class="line"></span><br><span class="line">当然，一般情况下，复制粘贴也是支持的。</span><br><span class="line"></span><br><span class="line"><span class="strong">**示例**</span>：</span><br></pre></td></tr></table></figure>
+
+<p><img src="//wise-bug.github.io/2019/07/30/MarkDown 使用手册/C:%5CUsers%5Cm1309%5CPictures%5C%E5%9B%BE%E7%89%87%5Ctime.jpg" alt="坠入" title="坠入"></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![<span class="string">坠入</span>](<span class="link">img/2.jpg "坠入"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">#### 5. 超链接</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**标准语法**</span>：\[<span class="string">超链接名</span>](<span class="link">超链接地址 "超链接title"</span>)</span><br><span class="line"></span><br><span class="line">title 可加可不加，但必须加 http/https。</span><br><span class="line"></span><br><span class="line">如果需要在 Typora 中打开链接，需要按着 Ctrl 再点击链接。</span><br><span class="line"></span><br><span class="line"><span class="strong">**示例**</span>：</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://Wise-Bug.github.io">我的博客</a></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="string">我的博客</span>](<span class="link">https://wise-bug.github.io/</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">### 四、序列和表格</span></span><br><span class="line"></span><br><span class="line"><span class="section">#### 1. 无序序列</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**标准语法**</span>：<span class="code">`*`</span>、<span class="code">`+`</span> 或 <span class="code">`-`</span>  +  "空格" + 内容</span><br><span class="line"></span><br><span class="line">在序列前加 Tab 可生成一个子序列。</span><br><span class="line"></span><br><span class="line"><span class="strong">**示例**</span>：</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>序列1<ul>
 <li>子序列1</li>
 <li>子序列2</li>
 </ul>
 </li>
-<li>序列2</li>
+<li>序列2<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">* </span>序列1</span><br><span class="line"><span class="bullet">	* </span>子序列1</span><br><span class="line"><span class="bullet">	* </span>子序列2</span><br><span class="line"><span class="bullet">* </span>序列2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">#### 2. 有序序列</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**标准语法**</span>：数字 + <span class="code">`.`</span> +  "空格"  +  内容</span><br><span class="line"></span><br><span class="line">在序列前加 Tab 可生成一个子序列。</span><br><span class="line"></span><br><span class="line"><span class="strong">**示例**</span>：</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h4 id="2-有序序列"><a href="#2-有序序列" class="headerlink" title="2. 有序序列"></a>2. 有序序列</h4><p><strong>标准语法</strong>：数字 + <code>.</code> +  “空格”  +  内容</p>
-<p>在序列前加 Tab 可生成一个子序列。</p>
-<p><strong>示例</strong>：</p>
-<pre><code>1. 有序序列1
-    1.1 有序子序列1
-    1.2 有序子序列2
-2. 有序序列2
-    * 无序子序列1
-    * 无序子序列2</code></pre><ol>
+<ol>
 <li>有序序列1<br> 1.1 有序子序列1<br> 1.2 有序子序列2</li>
 <li>有序序列2<ul>
 <li>无序子序列1</li>
-<li>无序子序列2</li>
+<li>无序子序列2<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1</span>. 有序序列<span class="number">1</span></span><br><span class="line">	<span class="number">1.1</span> 有序子序列<span class="number">1</span></span><br><span class="line">	<span class="number">1.2</span> 有序子序列<span class="number">2</span></span><br><span class="line"><span class="number">2</span>. 有序序列<span class="number">2</span></span><br><span class="line">	* 无序子序列<span class="number">1</span></span><br><span class="line">	* 无序子序列<span class="number">2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 3. 表格</span></span><br><span class="line"></span><br><span class="line">**标准语法**：</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. 表头：|表头<span class="number">1</span>|表头<span class="number">2</span>|表头<span class="number">3</span>|</span><br><span class="line"><span class="number">2</span>. 分割表头和内容：|----|----|----| ，这部分还有一个功能就是自定义居中、居左、居右。</span><br><span class="line">	* 默认居左</span><br><span class="line">	* 居中：|<span class="symbol">:----</span><span class="symbol">:|</span><span class="symbol">:----</span><span class="symbol">:|</span><span class="symbol">:----</span><span class="symbol">:|</span></span><br><span class="line">	* 居右：|----<span class="symbol">:|----</span><span class="symbol">:|----</span><span class="symbol">:|</span></span><br><span class="line"><span class="number">3</span>. 内容：|内容<span class="number">1</span>|内容<span class="number">2</span>|内容<span class="number">3</span>|</span><br><span class="line"></span><br><span class="line">但是由于 Typora 这个编辑器过于自动化，基本上只要写了表头之后，就会自动生成表格了，如果需要自定义修改，需要启用源代码模式进行修改。还有一点，一般不会进行表头的编写，这样可以自定义内容的格式，可变幻的风格会更大。</span><br><span class="line"></span><br><span class="line">**示例**：</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
 </li>
 </ol>
-<h4 id="3-表格"><a href="#3-表格" class="headerlink" title="3. 表格"></a>3. 表格</h4><p><strong>标准语法</strong>：</p>
-<ol>
-<li>表头：|表头1|表头2|表头3|</li>
-<li>分割表头和内容：|—-|—-|—-| ，这部分还有一个功能就是自定义居中、居左、居右。<ul>
-<li>默认居左</li>
-<li>居中：|:—-:|:—-:|:—-:|</li>
-<li>居右：|—-:|—-:|—-:|</li>
-</ul>
-</li>
-<li>内容：|内容1|内容2|内容3|</li>
-</ol>
-<p>但是由于 Typora 这个编辑器过于自动化，基本上只要写了表头之后，就会自动生成表格了，如果需要自定义修改，需要启用源代码模式进行修改。还有一点，一般不会进行表头的编写，这样可以自定义内容的格式，可变幻的风格会更大。</p>
-<p><strong>示例</strong>：</p>
-<pre><code>| 表头1 | 表头2 | 表头2 |
-| ----- | :-----: | -----: |
-| 内容1 | 内容2 | 内容3 |
-</code></pre><table>
+<table>
 <thead>
 <tr>
 <th>表头1</th>
@@ -299,8 +281,40 @@ printf(&quot;%d\n&quot;, a+b);</code></pre><h4 id="3-分割线"><a href="#3-分�
 <td align="right">内容3</td>
 </tr>
 </tbody></table>
-<h3 id="五、其他"><a href="#五、其他" class="headerlink" title="五、其他"></a>五、其他</h3><p>其实，以上部分已经可以处理绝大部分的文档编写了。但是 MarkDown 的功能绝不只有这些，下面的部分作为扩展部分。</p>
+<pre><code>| 表头1 | 表头2 | 表头2 |
+| ----- | :-----: | -----: |
+| 内容1 | 内容2 | 内容3 |
 
+
+
+### 五、其他
+
+其实，以上部分已经可以处理绝大部分的文档编写了。但是 MarkDown 的功能绝不只有这些，下面的部分作为扩展部分。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
         </div>
 
         
