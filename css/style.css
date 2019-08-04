@@ -1227,12 +1227,12 @@ header label {
   }
 }
 .highlight {
-  color: #657b83;
-  background: #fdf6e3;
+  background: #292a2d;
+  color: #dadedf;
 }
 .highlight .code .comment,
 .highlight .code .quote {
-  color: #93a1a1;
+  color: #586e75;
 }
 .highlight .code .keyword,
 .highlight .code .selector-tag,
@@ -1277,7 +1277,7 @@ header label {
   color: #dc322f;
 }
 .highlight .code .formula {
-  background: #eee8d5;
+  background: #073642;
 }
 .highlight .code .emphasis {
   font-style: italic;
