@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<title>Hello Hexo | Wise-Bug</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Home</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Home</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Hello Hexo</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Wise-Ant</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 1, 2000&nbsp;&nbsp;0:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/速查手册/">速查手册</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>保证 _posts 文件夹不为空。</p>
+<p>查看是否可以输出图片。</p>
+<p><img src="/2000/01/01/Hello-Hexo/test.png" alt="test"></p>
+<h2 id="Hexo-常用的几个命令："><a href="#Hexo-常用的几个命令：" class="headerlink" title="Hexo 常用的几个命令："></a>Hexo 常用的几个命令：</h2><h3 id="1-hexo-s-："><a href="#1-hexo-s-：" class="headerlink" title="1. hexo s ："></a>1. hexo s ：</h3><p><code>hexo s</code>  是  <code>hexo server</code> 的简写，命令效果一致。</p>
+<p>启动本地服务，用于预览主题。</p>
+<p>默认地址：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
+<h3 id="2-hexo-n-："><a href="#2-hexo-n-：" class="headerlink" title="2. hexo n ："></a>2. hexo n ：</h3><p><code>hexo n</code> 是 <code>hexo new</code> 的简写，命令效果一致。</p>
+<p>该命令的主要作用是创建文章，例如：hexo n “Hello Hexo”   </p>
+<p>在配置好显示图片设置之后，会在 _posts 文件夹下新增两个文件，一个是同名的 .md 文件，一个同名的文件夹，文件夹用来放图片。</p>
+<h3 id="3-hexo-g-："><a href="#3-hexo-g-：" class="headerlink" title="3. hexo g ："></a>3. hexo g ：</h3><p><code>hexo g</code> 是 <code>hexo generate</code> 的简写，命令效果一致。</p>
+<p>用来生成网址的静态文件，默认放在 public 文件夹中。</p>
+<h3 id="4-hexo-clean-："><a href="#4-hexo-clean-：" class="headerlink" title="4. hexo clean ："></a>4. hexo clean ：</h3><p>用来清除缓存文件 db.json 和 已生成的静态文件 public。</p>
+<p>一般在执行 <code>hexo g</code> ，前先执行 <code>hexo clean</code> 比较稳妥一点。</p>
+<h3 id="5-hexo-d-："><a href="#5-hexo-d-：" class="headerlink" title="5. hexo d ："></a>5. hexo d ：</h3><p><code>hexo d</code>是 <code>hexo deploy</code>的简写，命令效果一致。</p>
+<p>用来将本地博客上传到 Github 中。</p>
+<h3 id="6-hexo-new-page-："><a href="#6-hexo-new-page-：" class="headerlink" title="6. hexo new page ："></a>6. hexo new page ：</h3><p>标准用法 <code>hexo new page 网页名称</code></p>
+<p>默认链接地址为： 主页地址/网页名称</p>
+<p>网页不会出现在首页文章列表和归档中，也不支持设置分类和标签。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Wise-Ant</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="/2000/01/01/Hello-Hexo/">/2000/01/01/Hello-Hexo/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Hexo/"># Hexo</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/08/05/MarkDown/">MarkDown使用手册</a>
+            
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Wise-Ant | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
