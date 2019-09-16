@@ -189,9 +189,113 @@
         <div class="post-content">
             <h1 id="Go-语言学习笔记"><a href="#Go-语言学习笔记" class="headerlink" title="Go 语言学习笔记"></a>Go 语言学习笔记</h1><hr>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Go 语言出项的目的是希望在编程领域创造最实用的方式来进行软件开发。它并不是要用奇怪的语法和晦涩难懂的概念来从根本上推翻已有的编程语言，二是建立并改善了C、Java、C# 中的许多语法风格。它提倡通过接口来针对面向对象编程（接下来，会使用“OO”来表示面向对象），通过 goroutine 和 channel 来支持并发和并行编程。</p>
+<h2 id="语言结构与技术"><a href="#语言结构与技术" class="headerlink" title="语言结构与技术"></a>语言结构与技术</h2><h3 id="一、文件名、关键字与标识符"><a href="#一、文件名、关键字与标识符" class="headerlink" title="一、文件名、关键字与标识符"></a>一、文件名、关键字与标识符</h3><h4 id="文件名："><a href="#文件名：" class="headerlink" title="文件名："></a><strong>文件名</strong>：</h4><p>Go 的源文件以 <code>.go</code> 为后缀名存储在计算机中，这些文件名均由小写字母组成，如 <code>test.go</code> 。如果文件名由多个部分组成，则使用下划线 <code>_</code> 对它们进行分隔，如 <code>scanner_test.go</code> 。文件名不包含空格或其他特殊字符。</p>
+<p>一个源文件可以包含任意多行的代码，Go 本身没有对源文件的大小进行限制。</p>
+<h4 id="标识符："><a href="#标识符：" class="headerlink" title="标识符："></a><strong>标识符</strong>：</h4><p>Go 语言也是区分大小写的，这与 C 家族中的其它语言相同。有效的标识符必须以字母（可以使用任何 UTF-8 编码的字符或 <code>_</code>）开头，然后紧跟着 0 个或多个字符或 Unicode 数字，如：X56、group1、_x23、i、өԑ12。</p>
+<p><code>_</code> 本身就是一个特殊的标识符，被称为空白标识符。它可以像其他标识符那样用于变量的声明或赋值（任何类型都可以赋值给它），但任何赋给这个标识符的值都将被抛弃，因此这些值不能在后续的代码中使用，也不可以使用这个标识符作为变量对其它变量进行赋值或运算。</p>
+<p>在编码过程中，你可能会遇到没有名称的变量、类型或方法。虽然这不是必须的，但有时候这样做可以极大地增强代码的灵活性，这些变量被统称为匿名变量。</p>
+<h4 id="关键字："><a href="#关键字：" class="headerlink" title="关键字："></a><strong>关键字</strong>：</h4><p>下面列举了 Go 代码中会使用到的 25 个关键字或保留字：</p>
+<table>
+<thead>
+<tr>
+<th><strong>break</strong></th>
+<th><strong>default</strong></th>
+<th><strong>func</strong></th>
+<th><strong>interface</strong></th>
+<th><strong>select</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>case</strong></td>
+<td><strong>defer</strong></td>
+<td><strong>go</strong></td>
+<td><strong>map</strong></td>
+<td><strong>struct</strong></td>
+</tr>
+<tr>
+<td><strong>chan</strong></td>
+<td><strong>else</strong></td>
+<td><strong>goto</strong></td>
+<td><strong>package</strong></td>
+<td><strong>switch</strong></td>
+</tr>
+<tr>
+<td><strong>const</strong></td>
+<td><strong>fallthrough</strong></td>
+<td><strong>if</strong></td>
+<td><strong>range</strong></td>
+<td><strong>type</strong></td>
+</tr>
+<tr>
+<td><strong>continue</strong></td>
+<td><strong>for</strong></td>
+<td><strong>import</strong></td>
+<td><strong>return</strong></td>
+<td><strong>var</strong></td>
+</tr>
+</tbody></table>
+<p>除了以上介绍的这些关键字，Go 语言还有 36 个预定义标识符，其中包含了基本类型的名称和一些基本的内置函数。</p>
+<table>
+<thead>
+<tr>
+<th><strong>append</strong></th>
+<th><strong>bool</strong></th>
+<th><strong>byte</strong></th>
+<th><strong>cap</strong></th>
+<th><strong>close</strong></th>
+<th><strong>complex</strong></th>
+<th><strong>complex64</strong></th>
+<th><strong>complex128</strong></th>
+<th><strong>uint16</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>copy</strong></td>
+<td><strong>false</strong></td>
+<td><strong>float32</strong></td>
+<td><strong>float64</strong></td>
+<td><strong>imag</strong></td>
+<td><strong>int</strong></td>
+<td><strong>int8</strong></td>
+<td><strong>int16</strong></td>
+<td><strong>uint32</strong></td>
+</tr>
+<tr>
+<td><strong>int32</strong></td>
+<td><strong>int64</strong></td>
+<td><strong>iota</strong></td>
+<td><strong>len</strong></td>
+<td><strong>make</strong></td>
+<td><strong>new</strong></td>
+<td><strong>nil</strong></td>
+<td><strong>panic</strong></td>
+<td><strong>uint64</strong></td>
+</tr>
+<tr>
+<td><strong>print</strong></td>
+<td><strong>println</strong></td>
+<td><strong>real</strong></td>
+<td><strong>recover</strong></td>
+<td><strong>string</strong></td>
+<td><strong>true</strong></td>
+<td><strong>uint</strong></td>
+<td><strong>uint8</strong></td>
+<td><strong>uintptr</strong></td>
+</tr>
+</tbody></table>
+<h4 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h4><p>程序一般由<strong>关键字</strong>、<strong>常量</strong>、<strong>变量</strong>、<strong>运算符</strong>、<strong>类型</strong>和<strong>函数</strong>组成。</p>
+<p>程序中可能会使用到这些分隔符：括号 <code>()</code>，中括号 <code>[]</code> 和大括号 <code>{}</code>。</p>
+<p>程序中可能会使用到这些标点符号：<code>.</code>、<code>,</code>、<code>;</code>、<code>:</code> 和 <code>…</code>。</p>
+<p>程序的代码通过语句来实现结构化。每个语句不需要像 C 家族中的其它语言一样以分号 <code>;</code> 结尾，因为这些工作都将由 Go 编译器自动完成。</p>
+<p>如果你打算将多个语句写在同一行，它们则必须使用 <code>;</code> 人为区分，但在实际开发中我们并不鼓励这种做法。</p>
+<h3 id="二、Go-程序的基本结构和要素"><a href="#二、Go-程序的基本结构和要素" class="headerlink" title="二、Go 程序的基本结构和要素"></a>二、Go 程序的基本结构和要素</h3><h4 id="1-包的概念、导入与可见性"><a href="#1-包的概念、导入与可见性" class="headerlink" title="1. 包的概念、导入与可见性"></a>1. 包的概念、导入与可见性</h4><p>包是结构化代码的一种方式：每个程序都由包（通常简称 pkg ）的概念组成，可以使用自身的包或者从其他包中导入内容。</p>
+<p>如同其他一些编程语言中的类库或命名空间的概念，每个Go文件都属于且仅属于一个包。一个包可以由许多以 <code>.go</code>为扩展名的源文件组成，因此文件名和包名一般来说都是不相同的。</p>
+<p>你必须在源文件中的第一行（非注释）来指明这个文件属于哪个包，如：<code>package main</code>。</p>
+<p><code>package main</code>表示一个可独立执行的程序，每个 Go 应用程序都包含一个名为 <code>main</code>的包。</p>
+<p>一个应用程序可以包含不同的包，而且即时你只使用 <code>main</code>包也不必把所有的代码都写在一个巨大的文件里：你可以用一些较小的文件，并且在每个文件中的第一行都使用 <code>package main</code>来指明这些文件都属于 main 包。</p>
+<p>如果你打算编译包名不是 <code>main</code>的源文件，如<code>pack1</code>,编译后产生的对象文件将会是<code>pack1.a</code>而不是可执行程序。</p>
+<p>值得注意的是，所有包名都应该使用小写字母。</p>
 <ul>
-<li>起源</li>
-<li>安装和配置</li>
 <li>简单与复杂类型</li>
 <li>控制结构</li>
 <li>函数</li>
