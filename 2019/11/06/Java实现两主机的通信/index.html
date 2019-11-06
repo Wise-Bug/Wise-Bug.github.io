@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<title>Java实现两主机间的通信 | Wise-Bug</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Home</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Home</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Java实现两主机间的通信</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Wise-Ant</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十一月 6, 2019&nbsp;&nbsp;18:32:58</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Java实现两主机间的通信"><a href="#Java实现两主机间的通信" class="headerlink" title="Java实现两主机间的通信"></a>Java实现两主机间的通信</h1><hr>
+<p>在这里我有两点需要声明一下：</p>
+<ul>
+<li>这里所用的实现语言为 Java ，其实对于其他语言来说也同样适用，因为都是遵循 TCP/IP 协议；</li>
+<li>这里所提出的重点是“两主机”，两个不同的主机，意味着不同的IP地址，因为网上的代码大都是直接和本机进行通信，对于一个想通过实战了解TCP/IP的学生来说，总觉得差点什么。</li>
+</ul>
+<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>socket 是我们实现网络编程的重要工具。</p>
+<p>外网IP和内网IP的区别，以下是同一时刻，本机查询到的IP地址。</p>
+<p><img src="/2019/11/06/Java实现两主机的通信/1.png" alt></p>
+<p><strong>内网IP为：192.168.1.112</strong></p>
+<p><img src="/2019/11/06/Java实现两主机的通信/2.png" alt></p>
+<p><strong>外网IP为：121.193.129.130</strong></p>
+<h3 id="为什么分外网IP和内网IP？"><a href="#为什么分外网IP和内网IP？" class="headerlink" title="为什么分外网IP和内网IP？"></a>为什么分外网IP和内网IP？</h3><p>因为世界上所有的 IP 地址 加起来一共也就 42亿个左右，每个设备分配一个IP地址肯定是不够用的。</p>
+<h3 id="基本分法"><a href="#基本分法" class="headerlink" title="基本分法"></a>基本分法</h3><p>将IP地址分为 公有IP 和 私有IP，每个个人所分配到的 IP 都是 私有IP 地址，每个 公有IP 下面会存在很多 私有IP， 如果我们想要访问网络，我们需要将访问的请求发给公有IP，在真正的网络上，你的请求使用的是公有IP，当然，如果想要真正找到另一个网络下的私有IP，并与之相互通信的话，需要将 IP 地址 和 Mac 地址相结合使用。但在使用socket没见过将Mac地址作为变量的操作，也就意味着在互联网的通信过程中（至少在使用socket的过程中）是以IP地址作为初次连接的。</p>
+<p>内网和外网通信，这要看你的主动连接方客户端（client）和被动连接方服务端（server）个处于什么位置的。</p>
+<ol>
+<li>假设 server 方在外网，client 方在内网，那么可以直接通过外网 IP 进行连接，不需要任何映射。</li>
+<li>假设 server 方在内网，client 方不论是在内网还是在外网，都需要 Server 方的监听端口在外网能被访问到的权限，二者才能实现通信，可以通过端口映射的方法实现。</li>
+</ol>
+<h2 id="构建映射"><a href="#构建映射" class="headerlink" title="构建映射"></a>构建映射</h2><p>说直白一些，就是你得有一个域名，可以用阿里云、腾讯云等，直接买个云服务器；我在这里用的是花生壳来实现内网穿透，构建一组映射，用买到的一组ip、端口号与本机的内网IP和端口号绑定构成一组映射，以实现可以外网访问内网的目的。但需要下载官网的<code>phddns</code>。</p>
+<p><img src="/2019/11/06/Java实现两主机的通信/3.png" alt></p>
+<p><img src="/2019/11/06/Java实现两主机的通信/4.png" alt></p>
+<p>官方文档，不是很麻烦：<a href="http://service.oray.com/question/8146.html" target="_blank" rel="noopener">http://service.oray.com/question/8146.html</a></p>
+<h2 id="实战代码"><a href="#实战代码" class="headerlink" title="实战代码"></a>实战代码</h2><p>SockerDemoServer.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hello;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">import</span> java.net.UnknownHostException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SocketDemoServer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        ServerSocket serverSocket=<span class="keyword">null</span>;</span><br><span class="line">        Socket clientSocket=<span class="keyword">null</span>;</span><br><span class="line">        BufferedReader in=<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">int</span> port=<span class="number">5000</span>;</span><br><span class="line">        String str=<span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            InetAddress MyIP=InetAddress.getByName(<span class="string">"192.168.43.36"</span>);</span><br><span class="line">            System.out.println(MyIP.getHostAddress());</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> a = <span class="number">55</span>;</span><br><span class="line">                serverSocket=<span class="keyword">new</span> ServerSocket(port);    <span class="comment">//创建服务器套接字</span></span><br><span class="line">                System.out.println(<span class="string">"服务器开启，等待连接。。。"</span>);</span><br><span class="line">                clientSocket=serverSocket.accept();<span class="comment">// 获得链接</span></span><br><span class="line">                <span class="comment">//接收客户端发送的内容</span></span><br><span class="line">                in=<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(clientSocket.getInputStream()));</span><br><span class="line">                <span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    str=in.readLine();</span><br><span class="line">                    System.out.println(<span class="string">"客户端发送的内容为："</span>+str);</span><br><span class="line">                    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span>(IOException | InterruptedException e)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// TODO 自动生成的 catch 块</span></span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (UnknownHostException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>SocketDomeCilent.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">import</span> java.net.UnknownHostException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SocketDomeCilent</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Socket socket=<span class="keyword">null</span>;</span><br><span class="line">        PrintWriter out=<span class="keyword">null</span>;</span><br><span class="line">        BufferedReader in=<span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            InetAddress serverIP=InetAddress.getByName(<span class="string">"wise-ant.picp.io"</span>);</span><br><span class="line">            <span class="keyword">int</span> port=<span class="number">37190</span>;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                socket=<span class="keyword">new</span> Socket(serverIP,port);</span><br><span class="line">                in=<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(socket.getInputStream()));</span><br><span class="line">                out=<span class="keyword">new</span> PrintWriter(socket.getOutputStream(),<span class="keyword">true</span>);</span><br><span class="line">                <span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> number=(<span class="keyword">int</span>)(Math.random()*<span class="number">10</span>)+<span class="number">1</span>;</span><br><span class="line">                    System.out.println(<span class="string">"客户端正在发送的内容为："</span>+number);</span><br><span class="line">                    out.println(number);</span><br><span class="line">                    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span>(IOException | InterruptedException e)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// TODO 自动生成的 catch 块</span></span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (UnknownHostException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/2019/11/06/Java实现两主机的通信/5.png" alt></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Wise-Ant</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="/2019/11/06/Java实现两主机的通信/">/2019/11/06/Java实现两主机的通信/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2019/11/05/使用IDEA创建程序/">使用IDEA创建程序</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Wise-Ant | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

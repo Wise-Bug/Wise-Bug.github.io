@@ -7,7 +7,7 @@
 
 
 
-<title>计算机的视界 | Wise-Bug</title>
+<title>Ubuntu18.04.1安装IntelliJ IDEA | Wise-Bug</title>
 
 
 
@@ -169,7 +169,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">计算机的视界</h1>
+            <h1 class="post-title">Ubuntu18.04.1安装IntelliJ IDEA</h1>
             
                 <div class="post-meta">
                     
@@ -178,7 +178,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">九月 18, 2019&nbsp;&nbsp;14:12:08</a>
+                        Date: <a href="#">十一月 5, 2019&nbsp;&nbsp;12:17:37</a>
                         </span>
                     
                     
@@ -187,16 +187,26 @@
         </header>
 
         <div class="post-content">
-            <h1 id="计算机的“视”界"><a href="#计算机的“视”界" class="headerlink" title="计算机的“视”界"></a>计算机的“视”界</h1><hr>
-<p>写这篇文章的目的在于扩展一下我在计算机行业中的视野，主要说一下与计算机有关的技术名词，持续更新，说的不深，尽我所能将清楚。</p>
-<h2 id="1-GCC"><a href="#1-GCC" class="headerlink" title="1. GCC"></a>1. GCC</h2><p>GCC 编译器是 <strong>Linux</strong> 下默认的 <strong>C/C++ 编译器</strong>，大部分 Linux 发行版中都默认安装。</p>
-<h2 id="2-GNU-计划"><a href="#2-GNU-计划" class="headerlink" title="2. GNU 计划"></a>2. GNU 计划</h2><p>“革奴”计划，目标是创建一套完全自由的操作系统 GNU。“反版权”</p>
-<h2 id="3-GNU"><a href="#3-GNU" class="headerlink" title="3. GNU"></a>3. GNU</h2><p>一个自由（完全免费）的操作系统，全名：GNU’s Not Unix!    尚未开发成功。GNU 已经完成了除操作系统内核之外的各种软件开发，其中就包括 GCC 、shell 等。我们所说的 Linux 全称为 GNU/Liuux，他们两个加起来才可以叫做操作系统了，Linux 是一个操作系统内核，GNU 提供软件支持，至于各式各样的发行版，大概可以理解为 GNU/Linux 的皮肤。</p>
-<h2 id="4-操作系统"><a href="#4-操作系统" class="headerlink" title="4. 操作系统"></a>4. 操作系统</h2><p>首先它本质上属于软件，但它会直接和底层硬件所接触。包括：驱动程序（负责驱动硬件）、内核（管理资源）、支承库（接口库）、外围（其他部分）。</p>
-<h2 id="5-Clang"><a href="#5-Clang" class="headerlink" title="5. Clang"></a>5. Clang</h2><p>是由苹果主导开发的一个支持 C、C++、Objective-C 的一个编译器。</p>
-<h2 id="6-Make"><a href="#6-Make" class="headerlink" title="6. Make"></a>6. Make</h2><p>Make 工具主要用来处理一些有相互依赖关系文件的编译。</p>
-<h2 id="7-tar-gz"><a href="#7-tar-gz" class="headerlink" title="7. tar.gz"></a>7. tar.gz</h2><p>以 .tar.gz 为后缀的文件是一种压缩文件，在Linux和macOS下常见。</p>
-<h2 id="8-Linux-vi-vim"><a href="#8-Linux-vi-vim" class="headerlink" title="8. Linux vi/vim"></a>8. Linux vi/vim</h2><p>所有的 Unix Like 系统都会内建 vi 文本编译器，其他的文本编译器则不一定存在。但目前我们使用的比较多的是 vim。vim 是从 vi 发展出来的一个文本编译器。</p>
+            <h1 id="Ubuntu18-04-1安装IntelliJ-IDEA"><a href="#Ubuntu18-04-1安装IntelliJ-IDEA" class="headerlink" title="Ubuntu18.04.1安装IntelliJ IDEA"></a>Ubuntu18.04.1安装IntelliJ IDEA</h1><hr>
+<h2 id="下载地址："><a href="#下载地址：" class="headerlink" title="下载地址："></a>下载地址：</h2><p><a href="https://www.jetbrains.com/idea/download/#section=linux" target="_blank" rel="noopener">https://www.jetbrains.com/idea/download/#section=linux</a></p>
+<p>文件名：<code>ideaIC-2019.2.4.tar.gz</code></p>
+<h2 id="1-切换到下载目录"><a href="#1-切换到下载目录" class="headerlink" title="1.切换到下载目录"></a>1.切换到下载目录</h2><p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/1.png" alt></p>
+<h2 id="2-解压"><a href="#2-解压" class="headerlink" title="2.解压"></a>2.解压</h2><p>解压到 /opt 下：</p>
+<p><code>sudo tar -zxvf ideaIC-2019.2.4.tar.gz -C /opt</code></p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/2.png" alt></p>
+<h2 id="3-进入到IDEA文件夹下的bin目录"><a href="#3-进入到IDEA文件夹下的bin目录" class="headerlink" title="3.进入到IDEA文件夹下的bin目录"></a>3.进入到IDEA文件夹下的bin目录</h2><p><code>cd /opt/idea-IC-192.7142.36/bin</code>  </p>
+<h2 id="4-启动-IDEA"><a href="#4-启动-IDEA" class="headerlink" title="4.启动 IDEA"></a>4.启动 IDEA</h2><p><code>./idea.sh</code></p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/3.png" alt></p>
+<h2 id="5-初次配置"><a href="#5-初次配置" class="headerlink" title="5.初次配置"></a>5.初次配置</h2><p>一路<code>next</code>就好</p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/4.png" alt></p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/5.png" alt></p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/6.png" alt></p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/7.png" alt></p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/8.png" alt></p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/9.png" alt></p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/10.png" alt></p>
+<p><img src="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/11.png" alt></p>
+<p>然后退出重启就完成了。</p>
 
         </div>
 
@@ -211,7 +221,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="/2019/09/18/计算机的视界/">/2019/09/18/计算机的视界/</a></span>
+                        <span><a href="/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/">/2019/11/05/Ubuntu18-04-1安装IntelliJ-IDEA/</a></span>
                     </p>
                 
                 
@@ -239,10 +249,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2019/09/28/Matplotlib-手册/">Matplotlib 手册</a>
+                <a class="prev" rel="prev" href="/2019/11/05/使用IDEA创建程序/">使用IDEA创建程序</a>
             
             
-            <a class="next" rel="next" href="/2019/09/18/计算机网络/">计算机网络</a>
+            <a class="next" rel="next" href="/2019/11/04/Ubuntu18-04-安装Jdk1-8/">Ubuntu18.04 安装Jdk1.8</a>
             
         </section>
 
